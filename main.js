@@ -51,7 +51,7 @@ async function getPDFInfo() {
 async function writePDFSummary(outputPath) {
   const data = await getPDFInfo();
 
-  const ws = fs.createWriteStream("data/output.csv");
+  const ws = fs.createWriteStream("data/" + outputPath);
   fastcsv.write(data, { headers: true }).pipe(ws);
 }
 
