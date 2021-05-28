@@ -1,16 +1,16 @@
-const fs = require('fs');
-const path = require('path');
-const axios = require('axios');
-require('dotenv').config();
+const fs = require("fs");
+const path = require("path");
+const axios = require("axios");
+require("dotenv").config();
 
 async function downloadPDF(name, url) {
-  const file = path.resolve(__dirname, 'data', 'pdf', name);
+  const file = path.resolve(__dirname, "data", "pdf", name);
   const writer = fs.createWriteStream(`${file}.pdf`);
 
   const response = await axios({
     url,
-    method: 'GET',
-    responseType: 'stream',
+    method: "GET",
+    responseType: "stream",
   }).catch((err) => {
     console.log(`Unable to fetch from ${url}, error was ${err}`);
     return;
@@ -33,13 +33,13 @@ async function downloadSource() {
     },
   };
 
-  const sourceName = 'source-api';
+  const sourceName = "source-api";
   const res = await axios.get(url, config).catch((err) => {
     console.log(`Unable to fetch from ${url}, error was ${err}`);
     return;
   });
 
-  const file = path.resolve(__dirname, 'data', sourceName);
+  const file = path.resolve(__dirname, "data", sourceName);
   fs.writeFileSync(`${file}.json`, JSON.stringify(res.data.data, null, 2));
 
   return res.data.data;

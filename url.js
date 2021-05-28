@@ -1,8 +1,8 @@
-const fs = require('fs');
-const path = require('path');
-const fastcsv = require('fast-csv');
+const fs = require("fs");
+const path = require("path");
+const fastcsv = require("fast-csv");
 
-const file = path.resolve(__dirname, 'data');
+const file = path.resolve(__dirname, "data");
 
 const result = fs.readFileSync(`${file}/source-api.json`);
 const parsed = JSON.parse(result);
@@ -16,5 +16,5 @@ for (const form of parsed) {
   output.push(temp);
 }
 
-const ws = fs.createWriteStream('data/url.csv');
+const ws = fs.createWriteStream("data/url.csv");
 fastcsv.write(output, { headers: true }).pipe(ws);
