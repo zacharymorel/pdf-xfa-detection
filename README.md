@@ -13,6 +13,7 @@ The research can be found [here](https://fartbagxp.github.io/pdf-xfa-detection).
 - Install [NodeJS 12+](https://nodejs.org/en/).
 - Install all the 3rd party libraries `npm install`.
 - Write out the environment variables in a `.env` file (follow `.sample.env`).
+- If data/source-api.json and data/output.csv exist, go ahead and remove them.
 - Run `npm run download` to download all the PDF files locally.
 - Run `npm run parse` to parse the metadata and output the summary locally.
 
